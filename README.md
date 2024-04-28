@@ -213,6 +213,24 @@
         }
       },
   }
+   nextPwd(){
+              if(this.form.username.trim()===""){
+                this.$message.error("请输入用户名");
+                return ;
+              }
+              // 判断如果这个用户名已经存在 
+              this.$http.get("/user/selectByUesrName?username="+this.form.username).then(res=>{
+                if(res.data.code==200){
+                  this.active++;
+                  return ;
+                }
+                this.$message.error(res.data.msg);
+              })
+              // 将进度条 往后走一步  
+              // i++ ++i
+        }
+      },
+  }
 </script>
 
 
@@ -234,16 +252,6 @@
           </el-form>
           <el-table class="middle" :data="list" border
           highlight-current-row max-height="600px">
-              <el-table-column type="index" label="序号"
-              align="center"></el-table-column>
-              <el-table-column prop="username" label="账号"
-              align="center"></el-table-column>
-              <el-table-column prop="nickname" label="姓名"
-              align="center"></el-table-column>
-              <el-table-column prop="phone" label="电话"
-              align="center"></el-table-column>
-              <el-table-column prop="gender" label="性别"
-              align="center">
               <template slot-scope="scope">
                       {{ scope.row.gender == 1 ? "男" :  "女" }}
                   </template>
