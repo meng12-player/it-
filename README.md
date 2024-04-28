@@ -590,10 +590,7 @@ queryAll(){
         }
        })
     },
-    startRepair(oid){
-      this.aTable.str = oid
-      this.dialogFormVisible = true
-    },
+
 
 <el-form :inline="true" :model="params" class="demo-form-inline">
           <el-form-item label="报修服务">
@@ -609,11 +606,7 @@ queryAll(){
             :data="data"
             stripe
             style="width: 100%">
-          <el-table-column
-              type="index"
-              label="序号"
-              width="150"
-          >
+
           </el-table-column>
           <el-table-column
               prop="str"
@@ -674,9 +667,4 @@ queryAll(){
           >
           </el-date-picker>
         </el-form-item>
-      </el-form> 
-      <span slot="footer" class="dialog-footer">
-          <el-button @click="dialogClose">取 消</el-button>
-          <el-button type="primary" @click="submitForm('form')">确 定</el-button>
-        </span>
-    </el-dialog>
+
